@@ -18,6 +18,7 @@ import RenderWithMap from "./RenderWithMap/RenderWithMap";
 import DemoProps from "./Props/DemoProps/DemoProps";
 import EXRenderProductList from "./Props/EXRenderProductList/EXRenderProductList";
 import BaiTapXemChiTiet from "./Props/BaiTapXemChiTiet/BaiTapXemChiTiet";
+import BaiTapGioHang from "./Props/BaiTapGioHang/BaiTapGioHang";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 //JSX
@@ -37,6 +38,7 @@ root.render(
     {/* <RenderWithMap /> */}
     {/* <DemoProps /> */}
     {/* <EXRenderProductList /> */}
-    <BaiTapXemChiTiet />
+    {/* <BaiTapXemChiTiet /> */}
+    <BaiTapGioHang />
   </div>
 );

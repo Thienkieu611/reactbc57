@@ -23,6 +23,7 @@ import Register from "./Pages/Register";
 import Page404 from "./Pages/Page404";
 import Admin from "./Pages/Admin";
 import ReactForm from "./Pages/ReactForm/ReactForm";
+import ReactLifecycle from "./Pages/ReactLifeCycle/ReactLifecycle";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 //JSX
@@ -34,6 +35,7 @@ root.render(
         <Route path="gio-hang" element={<BaiTapGioHang />}></Route>
         <Route path="bt-change-color" element={<ChangeColor />}></Route>
         <Route path="react-form" element={<ReactForm />}></Route>
+        <Route path="react-life-cycle" element={<ReactLifecycle />}></Route>
       </Route>
       <Route path="user" element={<UserTemplate />}>
         <Route index element={<Login />}></Route>

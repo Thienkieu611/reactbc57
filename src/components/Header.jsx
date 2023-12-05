@@ -60,6 +60,19 @@ export default class Header extends Component {
                 React Form
               </NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "nav-link active" : "nav-link"
+                }
+                to="react-life-cycle"
+                style={({ isActive }) =>
+                  isActive ? { border: "1px solid orange" } : {}
+                }
+              >
+                React Lifecycle
+              </NavLink>
+            </li>
             <li className="nav-item dropdown">
               <NavLink
                 className="nav-link dropdown-toggle"

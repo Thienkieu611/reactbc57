@@ -82,15 +82,15 @@ export default class Header extends Component {
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                Dropdown
+                Redux
               </NavLink>
               <div className="dropdown-menu" aria-labelledby="dropdownId">
-                <a className="dropdown-item" href="#">
-                  Action 1
-                </a>
-                <a className="dropdown-item" href="#">
-                  Action 2
-                </a>
+                <NavLink className="dropdown-item" to="/redux-change-number">
+                  Change number
+                </NavLink>
+                <NavLink className="dropdown-item" to="redux-change-car">
+                  Change car
+                </NavLink>
               </div>
             </li>
           </ul>

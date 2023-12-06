@@ -25,26 +25,39 @@ import Admin from "./Pages/Admin";
 import ReactForm from "./Pages/ReactForm/ReactForm";
 import ReactLifecycle from "./Pages/ReactLifeCycle/ReactLifecycle";
 
+//cấu hình redux
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
+import ChangeNumberRedux from "./DemoRedux/ChangeNumberRedux";
+import ChangeCarColor from "./DemoRedux/ChangeCarColor";
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 //JSX
 root.render(
-  <BrowserRouter>
-    <Routes>
-      <Route path="" element={<HomeTemplate />}>
-        <Route index element={<div>Home</div>}></Route>
-        <Route path="gio-hang" element={<BaiTapGioHang />}></Route>
-        <Route path="bt-change-color" element={<ChangeColor />}></Route>
-        <Route path="react-form" element={<ReactForm />}></Route>
-        <Route path="react-life-cycle" element={<ReactLifecycle />}></Route>
-      </Route>
-      <Route path="user" element={<UserTemplate />}>
-        <Route index element={<Login />}></Route>
-        <Route path="login" element={<Login />}></Route>
-        <Route path="register" element={<Register />}></Route>
-      </Route>
-      <Route path="admin" element={<Admin />}></Route>
+  <Provider store={store}>
+    <BrowserRouter>
+      <Routes>
+        <Route path="" element={<HomeTemplate />}>
+          <Route index element={<div>Home</div>}></Route>
+          <Route path="gio-hang" element={<BaiTapGioHang />}></Route>
+          <Route path="bt-change-color" element={<ChangeColor />}></Route>
+          <Route path="react-form" element={<ReactForm />}></Route>
+          <Route path="react-life-cycle" element={<ReactLifecycle />}></Route>
+          <Route
+            path="redux-change-number"
+            element={<ChangeNumberRedux />}
+          ></Route>
+          <Route path="redux-change-car" element={<ChangeCarColor />}></Route>
+        </Route>
+        <Route path="user" element={<UserTemplate />}>
+          <Route index element={<Login />}></Route>
+          <Route path="login" element={<Login />}></Route>
+          <Route path="register" element={<Register />}></Route>
+        </Route>
+        <Route path="admin" element={<Admin />}></Route>
 
-      <Route path="*" element={<Navigate to="" />}></Route>
-    </Routes>
-  </BrowserRouter>
+        <Route path="*" element={<Navigate to="" />}></Route>
+      </Routes>
+    </BrowserRouter>
+  </Provider>
 );

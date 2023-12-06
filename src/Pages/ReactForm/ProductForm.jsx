@@ -83,9 +83,33 @@ export default class ProductForm extends Component {
     addProduct(this.state.values);
   };
 
+  //Cách 1: Can thiệp gán props vào state trước render của component dựa vào: static getDerivedStateFromProps
+  // static getDerivedStateFromProps(newProps, currentState) {
+  //   //can thiệp vào qúa trình trước khi render (bấm nút edit ở cha) => lấy state product edit gán vào state.value
+  //   console.log(newProps);
+  //   console.log(currentState);
+
+  //   if (newProps.productEdit.id !== currentState.values.id) {
+  //     //hành động click nút chỉnh sửa
+  //     currentState.values = { ...newProps.productEdit };
+  //   }
+
+  //   //trả về state mới để hàm render lấy dữ liệy làm this.state
+  //   return currentState;
+  // }
+
+  // Cách 2: Dùng componentWillReceiveProps can thiệp props vào state trước render
+  componentWillReceiveProps(newProps) {
+    //state thay đổi thì componentWillReceiveProps không chạy
+    this.setState({
+      values: newProps.productEdit,
+    });
+  }
+
   render() {
     console.log(this.state);
-    let { id, name, price, img, type, description } = this.props.productEdit;
+    //chuyển dữ liệu về state của component
+    let { id, name, price, img, type, description } = this.state.values;
     return (
       <form className="card" onSubmit={this.handleSubmit}>
         <div className="card-header bg-dark text-white">Product info</div>
@@ -182,6 +206,18 @@ export default class ProductForm extends Component {
             className="btn btn-primary"
           >
             Submit
+          </button>
+          <button
+            disabled={!this.state.isSubmit}
+            type="button"
+            className="btn btn-success mx-2"
+            onClick={() => {
+              //code chức năng cập nhật dữ liệu arrayProduct
+
+              this.props.updateProduct(this.state.values);
+            }}
+          >
+            Update
           </button>
         </div>
       </form>

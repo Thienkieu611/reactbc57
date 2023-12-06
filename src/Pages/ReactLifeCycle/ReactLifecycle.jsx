@@ -11,6 +11,7 @@ export default class ReactLifecycle extends Component {
       },
     };
     console.log("constructor");
+    this.timeout = {};
   }
 
   static getDerivedStateFromProps(newProps, currentState) {
@@ -61,8 +62,17 @@ export default class ReactLifecycle extends Component {
   componentDidMount() {
     //can thiệp sau khi html tạo ra
     console.log("componentDidMount");
+
+    this.timeout = setInterval(() => {
+      console.log("load data server");
+    }, 1000);
   }
   componentDidUpdate(prevProps, prevState) {
     console.log("componentDidUpdate");
+  }
+
+  componentWillUnmount() {
+    //lifecycle này sẽ thực thi trước khi component mất khỏi giao diện (mất khỏi dom)
+    clearInterval(this.timeout);
   }
 }

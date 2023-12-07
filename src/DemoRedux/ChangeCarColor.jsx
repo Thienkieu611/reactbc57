@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { changeCarColorAction } from "../redux/reducers/imgReducer";
 class ChangeCarColor extends Component {
   render() {
     const { img, dispatch } = this.props;
@@ -8,16 +9,17 @@ class ChangeCarColor extends Component {
         <h3>Change car color</h3>
         <div className="row">
           <div className="col-6">
-            <img src={img} alt="..." className="w-100" />
+            <img src={img.imgState} alt="..." className="w-100" />
           </div>
           <div className="col-6">
             <button
               className="btn btn-danger"
               onClick={() => {
-                const action = {
-                  type: "CHANGE_CAR_COLOR_ACTION",
-                  payload: "red",
-                };
+                // const action = {
+                //   type: "imgReducer/changeCarColorAction",
+                //   payload: "red",
+                // };
+                const action = changeCarColorAction("red");
                 dispatch(action);
               }}
             >
@@ -26,10 +28,12 @@ class ChangeCarColor extends Component {
             <button
               className="btn btn-dark mx-2"
               onClick={() => {
-                const action = {
-                  type: "CHANGE_CAR_COLOR_ACTION",
-                  payload: "black",
-                };
+                // const action = {
+                //   type: "imgReducer/changeCarColorAction",
+                //   payload: "black",
+                // };
+                const action = changeCarColorAction("black");
+                console.log(action);
                 dispatch(action);
               }}
             >

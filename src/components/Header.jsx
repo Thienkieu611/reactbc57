@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
+import { connect } from "react-redux";
 
-export default class Header extends Component {
+class Header extends Component {
   render() {
+    const { tongSoLuong, tongTien } = this.props;
     return (
       //bs5-navbar-background
       <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -91,24 +93,39 @@ export default class Header extends Component {
                 <NavLink className="dropdown-item" to="redux-change-car">
                   Change car
                 </NavLink>
+                <NavLink className="dropdown-item" to="redux-change-font-size">
+                  Change font size
+                </NavLink>
               </div>
             </li>
           </ul>
           <form className="d-flex my-2 my-lg-0">
-            <input
-              className="form-control me-sm-2"
-              type="text"
-              placeholder="Search"
-            />
-            <button
-              className="btn btn-outline-success my-2 my-sm-0"
-              type="submit"
+            <NavLink
+              to="/redux-gio-hang"
+              className={"nav-link mx-5 text-white"}
             >
-              Search
-            </button>
+              <i className="fa fa-2x fa-cart-plus"></i> ({tongSoLuong} -{" "}
+              {tongTien.toLocaleString()})
+            </NavLink>
           </form>
         </div>
       </nav>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  let { gioHang } = state.gioHangState;
+  let tongSoLuong = 0;
+  let tongTien = 0;
+  for (let spGH of gioHang) {
+    tongSoLuong += spGH.soLuong;
+    tongTien += spGH.soLuong * spGH.giaBan;
+  }
+  return {
+    //this.props = {tongSoLuong, tongTien}
+    tongSoLuong,
+    tongTien,
+  };
+};
+export default connect(mapStateToProps)(Header);

@@ -30,6 +30,9 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import ChangeNumberRedux from "./DemoRedux/ChangeNumberRedux";
 import ChangeCarColor from "./DemoRedux/ChangeCarColor";
+import ChangeFontSize from "./DemoRedux/ChangeFontSize";
+import BaiTapGioHangRedux from "./DemoRedux/BaiTapGioHangRedux/BaiTapGioHangRedux";
+import DanhSachSanPhamRedux from "./DemoRedux/BaiTapGioHangRedux/DanhSachSanPhamRedux";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 //JSX
@@ -38,7 +41,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="" element={<HomeTemplate />}>
-          <Route index element={<div>Home</div>}></Route>
+          <Route index element={<DanhSachSanPhamRedux />}></Route>
           <Route path="gio-hang" element={<BaiTapGioHang />}></Route>
           <Route path="bt-change-color" element={<ChangeColor />}></Route>
           <Route path="react-form" element={<ReactForm />}></Route>
@@ -48,6 +51,11 @@ root.render(
             element={<ChangeNumberRedux />}
           ></Route>
           <Route path="redux-change-car" element={<ChangeCarColor />}></Route>
+          <Route
+            path="redux-change-font-size"
+            element={<ChangeFontSize />}
+          ></Route>
+          <Route path="redux-gio-hang" element={<BaiTapGioHangRedux />}></Route>
         </Route>
         <Route path="user" element={<UserTemplate />}>
           <Route index element={<Login />}></Route>
